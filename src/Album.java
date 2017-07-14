@@ -9,6 +9,7 @@ public class Album {
     public double duration = 0;
     public ArrayList<Track> tracks;
     public int albumId = 0;    
+  
     Album()
     {
     }
