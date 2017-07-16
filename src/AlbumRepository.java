@@ -1,17 +1,23 @@
  
 import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 public class AlbumRepository 
 {
     public static ArrayList <Album> getAlbums()
     {
-        ArrayList <Album> albums  = new ArrayList <Album>();
-        
-        albums.add(getMichaelAlbum());
-        albums.add(getPopekAlbum());
-        albums.add(getSeasonAlbum());
-                  
-        return albums;
+        return getAlbumsFromDb();
+//        ArrayList <Album> albums  = new ArrayList <Album>();
+//        
+//        albums.add(getMichaelAlbum());
+//        albums.add(getPopekAlbum());
+//        albums.add(getSeasonAlbum());
+//                  
+//        return albums;
     }
     
     private static Album getPopekAlbum()
@@ -53,6 +59,26 @@ public class AlbumRepository
                         
             return album;
         }
-            
+    public static ArrayList <Album> getAlbumsFromDb()
+    {
+            //creating configuration object  
+        Configuration cfg=new Configuration();  
+        cfg.configure("hibernate.cfg.xml");//populates the data of the configuration file  
+
+        //creating seession factory object  
+        SessionFactory factory=cfg.buildSessionFactory();  
+
+        //creating session object  
+        Session session=factory.openSession();  
+
+        //creating transaction object  
+        Transaction t=session.beginTransaction();
+        
+        List<Album> e1 = session.createCriteria(Album.class).list(); //tworzy sql, który pobierze wszystkie albumy
+        
+       session.close();  
+
+       return new ArrayList<Album>(e1);
+    }
             
 }

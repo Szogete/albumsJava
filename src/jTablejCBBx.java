@@ -166,12 +166,12 @@ public class jTablejCBBx extends javax.swing.JFrame {
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
        Album selectedAlbum = jList1.getSelectedValue();
-       jTextPaneTitle.setText(selectedAlbum.title);
-       jTextPaneArtist.setText(selectedAlbum.artist);
-       jTextPaneDuration.setText(""+selectedAlbum.duration);
+       jTextPaneTitle.setText(selectedAlbum.getTitle());
+       jTextPaneArtist.setText(selectedAlbum.getArtist());
+       jTextPaneDuration.setText(""+selectedAlbum.getDuration());
        
        //lista, obiekt z danymi, lista danych
-       TrackTableModel trackListModel = new TrackTableModel(selectedAlbum.tracks); //utworzenie modelu
+       TrackTableModel trackListModel = new TrackTableModel(selectedAlbum.getTracks()); //utworzenie modelu
        trackTable.setModel(trackListModel); //ustawienie modelu
         
     }//GEN-LAST:event_jList1ValueChanged

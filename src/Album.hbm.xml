@@ -40,12 +40,13 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-mapping>
-  <class name="Album" table="tblAlbums"/>
+  <class name="Album" table="tblAlbums">
   
-    <id name="albumId">  
-     <generator class="assigned"></generator>  
-    </id>  
-            
-    <property name="firstName"></property>  
-    <property name="lastName"></property>
+      <id name="albumId" type="int" column="AlbumId">
+        <generator class="native"/>
+      </id>
+      <property name="title" column="AlbumTitle" type="string"/>
+      <property name="artist" column="Artist" type="string"/>
+  </class>
 </hibernate-mapping>
+

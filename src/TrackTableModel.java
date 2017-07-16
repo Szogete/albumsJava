@@ -1,18 +1,22 @@
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class TrackTableModel extends AbstractTableModel
 {
-    private ArrayList<Track> tracks;
+    private List<Track> tracks;
     
-    TrackTableModel(ArrayList<Track> tracks)
+    TrackTableModel(List<Track> tracks)
     {
         this.tracks = tracks;
     }
     
     @Override
     public int getRowCount() {
+        if(tracks == null)
+            return 0;
+        
         return tracks.size();        
     }
 
@@ -23,6 +27,8 @@ public class TrackTableModel extends AbstractTableModel
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        if(tracks == null) return "";
+        
         switch (columnIndex) {
            case 0:
               return tracks.get(rowIndex).trackName;
