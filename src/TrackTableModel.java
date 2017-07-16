@@ -1,13 +1,14 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.swing.table.AbstractTableModel;
 
 public class TrackTableModel extends AbstractTableModel
 {
-    private List<Track> tracks;
+    private Track[] tracks;
     
-    TrackTableModel(List<Track> tracks)
+    TrackTableModel(Track[] tracks)
     {
         this.tracks = tracks;
     }
@@ -17,7 +18,7 @@ public class TrackTableModel extends AbstractTableModel
         if(tracks == null)
             return 0;
         
-        return tracks.size();        
+        return tracks.length;        
     }
 
     @Override
@@ -31,9 +32,9 @@ public class TrackTableModel extends AbstractTableModel
         
         switch (columnIndex) {
            case 0:
-              return tracks.get(rowIndex).trackName;
+              return tracks[rowIndex].getTrackName();
            case 1:
-              return tracks.get(rowIndex).duration;
+              return tracks[rowIndex].getDuration();
            default:
               return "";
          }

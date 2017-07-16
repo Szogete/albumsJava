@@ -47,6 +47,14 @@ Contributor(s):
       </id>
       <property name="title" column="AlbumTitle" type="string"/>
       <property name="artist" column="Artist" type="string"/>
+      
+      <set name="tracks" table="tblTrack"
+				inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="AlbumId" not-null="true" />
+            </key>
+            <one-to-many class="Track" />
+       </set>
   </class>
 </hibernate-mapping>
 

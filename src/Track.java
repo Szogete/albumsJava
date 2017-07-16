@@ -1,9 +1,9 @@
 public class Track {
 
-    public String trackName;
-    public double duration;
-    public int albumId = 0;
-    public int trackId = 0;
+    private String trackName;
+    private double duration;
+    private int albumId = 0;
+    private int trackId = 0;
       
     Track()
     {
@@ -14,7 +14,7 @@ public class Track {
         return trackName;  
     }  
     
-    public void setTrackName(String TrackName) 
+    public void setTrackName(String trackName) 
     {  
         this.trackName = trackName;  
     }  

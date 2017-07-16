@@ -48,6 +48,10 @@ Contributor(s):
       <property name="trackName" column="Title" type="string"/>
       <property name="duration" column="Duration" type="double"/>
       <property name="albumId" column="AlbumId" type="int"/>
+      
+<!--      <many-to-one name="stock" class="Album" fetch="select">
+            <column name="STOCK_ID" not-null="true" />
+      </many-to-one>-->
   </class>
   
   

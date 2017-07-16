@@ -1,3 +1,4 @@
+import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.table.DefaultTableModel;
@@ -170,8 +171,12 @@ public class jTablejCBBx extends javax.swing.JFrame {
        jTextPaneArtist.setText(selectedAlbum.getArtist());
        jTextPaneDuration.setText(""+selectedAlbum.getDuration());
        
+       
+       Set<Track> tracks = selectedAlbum.getTracks();
+       Track[] tracksArray = tracks.toArray(new Track[tracks.size()]);
+       
        //lista, obiekt z danymi, lista danych
-       TrackTableModel trackListModel = new TrackTableModel(selectedAlbum.getTracks()); //utworzenie modelu
+       TrackTableModel trackListModel = new TrackTableModel(tracksArray); //utworzenie modelu
        trackTable.setModel(trackListModel); //ustawienie modelu
         
     }//GEN-LAST:event_jList1ValueChanged
